@@ -1,10 +1,10 @@
 package com.cs473.mda.assignmentweek3lesson5.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.cs473.mda.assignmentweek3lesson5.R
 import com.cs473.mda.assignmentweek3lesson5.model.DataFactory
 import com.cs473.mda.assignmentweek3lesson5.model.User
@@ -37,7 +37,7 @@ class RegisterPageActivity : AppCompatActivity() {
             val lastName = lastNameEditText!!.text.toString()
             val email = emailEditText!!.text.toString()
             val password = passwordEditText!!.text.toString()
-            val user = find(email)
+            val user = DataFactory.find(email)
             if (user == null) {
                 validateShowMessage(firstName, lastName, email, password)
                 if ( firstName.isNotEmpty() || lastName.isNotEmpty() || email.isNotEmpty() || password.isNotEmpty()) {
@@ -69,10 +69,5 @@ class RegisterPageActivity : AppCompatActivity() {
             Toast.makeText(this, "password is empty", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun find(email: String): User? {
-        return DataFactory.fetchUserData().find { user -> user.email == email }
-    }
-
 
 }

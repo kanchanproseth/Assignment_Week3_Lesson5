@@ -2,18 +2,14 @@ package com.cs473.mda.assignmentweek3lesson5.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.cs473.mda.assignmentweek3lesson5.R
 import com.cs473.mda.assignmentweek3lesson5.model.DataFactory
 import com.cs473.mda.assignmentweek3lesson5.model.User
@@ -46,16 +42,12 @@ class MainActivity : AppCompatActivity() {
         createAccountButton = findViewById(R.id.sign_in_create_button)
     }
 
-    private fun find(email: String, password: String): User? {
-        val users = DataFactory.fetchUserData()
-        return users.find { user -> user.email == email && user.password == password }
-    }
 
     private fun signIn() {
         signInButton!!.setOnClickListener {
             val emailText = emailEditText!!.text.toString()
             val passwordText = passwordEditText!!.text.toString()
-            val user = find(emailText, passwordText)
+            val user = DataFactory.find(emailText, passwordText)
             if (user != null) {
                 Intent(this, ShoppingActivity::class.java).also {
                     it.putExtra("email", user.email)
