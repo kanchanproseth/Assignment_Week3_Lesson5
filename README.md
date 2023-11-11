@@ -24,9 +24,11 @@ Assignment Name: Assignment Week 3 Lesson 5
 #### Register screen (user create account successfully)
 ![alt text](https://github.com/kanchanproseth/Assignment_Week3_Lesson5/blob/main/screenshot/create_account_success.png?raw=true)
 
-#### Forgot Password page ()
+#### Forgot Password page 
 ![alt text](https://github.com/kanchanproseth/Assignment_Week3_Lesson5/blob/main/screenshot/invalid_forget_pw.png?raw=true)
 
+#### category on click (when user click on category show toast message)
+![alt text](https://github.com/kanchanproseth/Assignment_Week3_Lesson5/blob/main/screenshot/category_on_click.png?raw=true)
 
 ### Coding Section
 
@@ -218,6 +220,43 @@ private fun setupView() {
 }
 ```
 
+##### Category on click 
+
+```kotlin
+private fun bindElectronicOnclick() {
+   electronicImage?.setOnClickListener {
+       showCategory(WalmartCategory.ELECTRONIC)
+   }
+}
+
+private fun bindClothingOnclick() {
+   clothingImage?.setOnClickListener {
+       showCategory(WalmartCategory.CLOTHING)
+   }
+}
+
+private fun bindBeautyOnclick() {
+   beautyImage?.setOnClickListener {
+       showCategory(WalmartCategory.BEAUTY)
+   }
+}
+
+private fun bindFoodOnclick() {
+   foodImage?.setOnClickListener {
+       showCategory(WalmartCategory.FOOD)
+   }
+}
+
+private fun showCategory(category: WalmartCategory) {
+   Toast.makeText(
+       this,
+       " You have chosen the ${category.toString().lowercase()} category of shopping",
+       Toast.LENGTH_SHORT
+   )
+       .show()
+}
+```
+
 #### Forgot Password Activity [main function]
 
 ##### sendButton OnClick listener 
@@ -239,3 +278,7 @@ sendButton!!.setOnClickListener {
     }
 }
 ```
+
+
+
+
